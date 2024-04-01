@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://b4lx771ljgh3o" path="res://player/player.tscn" id="1_it88j"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7yr8e"]
-size = Vector3(100, 1, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ycny7"]
 size = Vector3(100, 1, 100)
@@ -27,3 +26,6 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_it88j")]
+movement_speed = 3.5
+sensitivity = 0.6
+max_health = 100.0
