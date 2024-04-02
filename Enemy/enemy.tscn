@@ -1,16 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://clec2clxmfv2a"]
+[gd_scene load_steps=4 format=3 uid="uid://clec2clxmfv2a"]
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_ebcpd"]
+[ext_resource type="PackedScene" uid="uid://daeen7w85knt6" path="res://Enemy/maxdamage_scab-low-poly.gltf" id="2_c24nk"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k2vbg"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_6x3dl"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5q2e1"]
-albedo_color = Color(1, 0, 0, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_5rucr"]
-material = SubResource("StandardMaterial3D_5q2e1")
+[sub_resource type="BoxShape3D" id="BoxShape3D_ao6ls"]
+size = Vector3(0.768555, 0.430313, 0.593994)
 
 [node name="Enemy" type="CharacterBody3D"]
 collision_layer = 8
@@ -20,15 +14,12 @@ speed = 1.0
 follow_range = 10.0
 draw_follow_range = true
 
+[node name="model" parent="." instance=ExtResource("2_c24nk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.19209e-07, 0, 0.00570211)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_k2vbg")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_6x3dl")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.60995, 0.738676)
-mesh = SubResource("BoxMesh_5rucr")
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.430954, -0.0599365)
+shape = SubResource("BoxShape3D_ao6ls")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
