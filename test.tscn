@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cla3k8tja00vn"]
+[gd_scene load_steps=9 format=3 uid="uid://cla3k8tja00vn"]
 
 [ext_resource type="PackedScene" uid="uid://b4lx771ljgh3o" path="res://player/player.tscn" id="1_it88j"]
+[ext_resource type="PackedScene" uid="uid://b7343ijlf47lc" path="res://Global/Global.tscn" id="2_8s6q5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7yr8e"]
 size = Vector3(100, 1, 100)
@@ -8,22 +9,47 @@ size = Vector3(100, 1, 100)
 [sub_resource type="BoxMesh" id="BoxMesh_ycny7"]
 size = Vector3(100, 1, 100)
 
-[node name="Level" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_kb16c"]
 
-[node name="Ground" type="Node3D" parent="."]
+[sub_resource type="BoxMesh" id="BoxMesh_msmxg"]
+
+[sub_resource type="Sky" id="Sky_d275a"]
+
+[sub_resource type="Environment" id="Environment_wqom3"]
+background_mode = 2
+sky = SubResource("Sky_d275a")
+
+[node name="test" type="Node3D"]
+
+[node name="Global" parent="." instance=ExtResource("2_8s6q5")]
+
+[node name="Level" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+[node name="Floor" type="StaticBody3D" parent="Level"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Floor"]
 shape = SubResource("BoxShape3D_7yr8e")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground/StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Floor"]
 mesh = SubResource("BoxMesh_ycny7")
 skeleton = NodePath("../..")
 
+[node name="Box1" type="StaticBody3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Box1"]
+shape = SubResource("BoxShape3D_kb16c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Box1"]
+mesh = SubResource("BoxMesh_msmxg")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 0.793247, 0.6089, 0, -0.6089, 0.793247, 0, 5, 3.27542)
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_it88j")]
+transform = Transform3D(0.039504, 0, -0.999219, 0, 1, 0, 0.999219, 0, 0.039504, 0, 1, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wqom3")

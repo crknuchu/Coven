@@ -1,9 +1,9 @@
+WorldEnvironment
+MeshInstance3D
+CollisionShape3D
 StaticBody3D
 DirectionalLight3D
 Camera3D
-MeshInstance3D
-CollisionShape3D
 CharacterBody3D
-WorldEnvironment
 Node3D
 ParallaxBackground
