@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://d0ljbgv0glbd8"]
 
-[ext_resource type="Script" path="res://Weapons/melee_weapon.gd" id="1_lxfmb"]
-[ext_resource type="Texture2D" uid="uid://b05tfb5slwq2k" path="res://Weapons/knife_knife.png" id="2_j0xga"]
+[ext_resource type="Script" path="res://Weapons/Knife/melee_weapon.gd" id="1_lxfmb"]
+[ext_resource type="Texture2D" uid="uid://b05tfb5slwq2k" path="res://Weapons/Knife/knife_knife.png" id="2_j0xga"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lhgwm"]
 size = Vector3(1, 2, 2)

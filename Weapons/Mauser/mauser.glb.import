@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dt3erqj4ac00q"
-path="res://.godot/imported/mauser.glb-1ed9e1a90eeabe59aec309a85a1c1cc7.scn"
+path="res://.godot/imported/mauser.glb-aa9018c514a30eaabd6e41f5cc972780.scn"
 
 [deps]
 
-source_file="res://Weapons/mauser.glb"
-dest_files=["res://.godot/imported/mauser.glb-1ed9e1a90eeabe59aec309a85a1c1cc7.scn"]
+source_file="res://Weapons/Mauser/mauser.glb"
+dest_files=["res://.godot/imported/mauser.glb-aa9018c514a30eaabd6e41f5cc972780.scn"]
 
 [params]
 
