@@ -18,6 +18,7 @@ collision_mask = 5
 script = ExtResource("1_ebcpd")
 speed = 1.0
 follow_range = 10.0
+draw_follow_range = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_k2vbg")

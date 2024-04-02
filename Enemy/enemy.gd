@@ -5,6 +5,7 @@ class_name Enemy
 @export var damage: float = 20.0
 @export var speed: float = 5.0
 @export var follow_range: float = 5
+@export var draw_follow_range: bool = false
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var vision_raycast: RayCast3D = $RayCast3D
@@ -20,8 +21,9 @@ func setup():
 	set_physics_process(true)
 	nav_agent.set_target_position(Global.player.global_position)
 
-func draw_follow_range():
-	DebugDraw3D.draw_sphere(position,follow_range,Color(1,0,0))
+func draw_follow_range_sphere():
+	if draw_follow_range:
+		DebugDraw3D.draw_sphere(position,follow_range,Color(1,0,0))
 
 func _physics_process(_delta):
 	if not is_instance_valid(Global.player):
@@ -29,11 +31,11 @@ func _physics_process(_delta):
 	if should_follow():
 		follow()
 	send_raycast()
-	draw_follow_range()
+	draw_follow_range_sphere()
 
 func send_raycast():
 	vision_raycast.rotation.y = -rotation.y
-	vision_raycast.target_position = (Global.player.global_position + Vector3.UP*0.5 - vision_raycast.global_position) *100
+	vision_raycast.target_position = (Global.player.global_position + Vector3.UP*0.5 - vision_raycast.global_position)
 
 func follow():
 	nav_agent.set_target_position(Global.player.global_position)

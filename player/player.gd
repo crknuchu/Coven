@@ -4,12 +4,13 @@ extends CharacterBody3D
 @export var movement_speed: float = 3.5
 @export var sensitivity: float = 0.6
 @export var max_health: float = 100.0
-
-const JUMP_VELOCITY = 6.5
-var gravity = 10.0
+@export var max_armor: float = 100.0
+@export var jump_velocity: float = 6.5
+@export var gravity: float = 10.0
 
 @onready var camera: Camera3D = $Camera3D
 @onready var health: float = max_health
+@onready var armor: float = max_armor
 @onready var hitbox = $Camera3D/MeleeWeapon/Hitbox
 
 func _ready():
@@ -25,11 +26,9 @@ func _process_movement(delta):
 		velocity.y -= gravity * delta
 		
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = jump_velocity
 		
-	var input_dir = Input.get_vector(
-		"move_left", "move_right", "move_forward", "move_backward"
-		)
+	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	var v1 = Vector2(velocity.x, velocity.z)
@@ -55,9 +54,22 @@ func attack(damage):
 		enemy.hit(damage)
 
 func hit(damage):
-	health -= damage
+	if(armor > 0):
+		if(armor > damage):
+			armor -= damage
+		else:
+			health -= damage - armor
+			armor = 0
+	else:
+		health -= damage
 	if is_dead():
 		die()
+
+func heal(ammount):
+	health = maxf(health + ammount, max_health)
+
+func get_armor(ammount):
+	armor = maxf(armor + ammount, max_armor)
 
 func is_dead():
 	return health <= 0
