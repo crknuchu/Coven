@@ -15,9 +15,6 @@ size = Vector3(1, 2, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 collision_mask = 14
 script = ExtResource("1_w8ge0")
-movement_speed = null
-sensitivity = null
-max_health = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_0maa2")
@@ -28,8 +25,10 @@ mesh = SubResource("CapsuleMesh_4pgb5")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
+collision_mask = 8
 
-[node name="MeleeAttackBox" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.598117, -1.51076)
 shape = SubResource("BoxShape3D_lhgwm")

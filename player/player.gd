@@ -10,6 +10,7 @@ var gravity = 10.0
 
 @onready var camera: Camera3D = $Camera3D
 @onready var health: float = max_health
+@onready var hitbox = $Camera3D/Hitbox
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -45,5 +46,10 @@ func _unhandled_input(event):
 		rotate_y(-sensitivity*event.relative.x/100.0)
 
 func _process_input():
-	pass
-	#attack, swap weapons
+	var damage = 50
+	if Input.is_action_just_pressed("attack"):
+		attack(damage)
+
+func attack(damage):
+	for enemy in hitbox.get_overlapping_bodies():
+		enemy.hit(damage)
