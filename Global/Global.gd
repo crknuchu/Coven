@@ -1,5 +1,7 @@
 extends Node
 
+var player: Player
+
 func _input(event):
 	if Input.is_action_just_pressed("fullscreen"):
 		if get_window().mode == Window.MODE_EXCLUSIVE_FULLSCREEN:

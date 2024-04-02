@@ -1,7 +1,3 @@
-res://node_3d.tscn
 res://test.tscn
-res://player.tscn
 res://player/player.tscn
 res://player/player.gd
-res://Global/Global.tscn
-res://Global/Global.gd

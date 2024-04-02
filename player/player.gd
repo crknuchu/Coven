@@ -13,6 +13,7 @@ var gravity = 10.0
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Global.player = self
 	
 func _physics_process(delta):
 	_process_movement(delta)
@@ -45,3 +46,4 @@ func _unhandled_input(event):
 
 func _process_input():
 	pass
+	#attack, swap weapons

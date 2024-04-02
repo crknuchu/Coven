@@ -1,7 +1,19 @@
 [gd_scene load_steps=9 format=3 uid="uid://cla3k8tja00vn"]
 
 [ext_resource type="PackedScene" uid="uid://b4lx771ljgh3o" path="res://player/player.tscn" id="1_it88j"]
-[ext_resource type="Script" path="res://Global/Global.gd" id="1_py6te"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xqhdl"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_v7rfm"]
+sky_material = SubResource("ProceduralSkyMaterial_xqhdl")
+
+[sub_resource type="Environment" id="Environment_i7tas"]
+background_mode = 2
+sky = SubResource("Sky_v7rfm")
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7yr8e"]
 size = Vector3(100, 1, 100)
@@ -13,14 +25,14 @@ size = Vector3(100, 1, 100)
 
 [sub_resource type="BoxMesh" id="BoxMesh_msmxg"]
 
-[sub_resource type="Sky" id="Sky_d275a"]
-
-[sub_resource type="Environment" id="Environment_wqom3"]
-background_mode = 2
-sky = SubResource("Sky_d275a")
-
 [node name="test" type="Node3D"]
-script = ExtResource("1_py6te")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i7tas")
 
 [node name="Level" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -43,12 +55,5 @@ shape = SubResource("BoxShape3D_kb16c")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Box1"]
 mesh = SubResource("BoxMesh_msmxg")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.793247, 0.6089, 0, -0.6089, 0.793247, 0, 5, 3.27542)
-shadow_enabled = true
-
 [node name="Player" parent="." instance=ExtResource("1_it88j")]
-transform = Transform3D(0.039504, 0, -0.999219, 0, 1, 0, 0.999219, 0, 0.039504, 0, 1, 0)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_wqom3")
+transform = Transform3D(0.039504, 0, -0.999219, 0, 1, 0, 0.999219, 0, 0.039504, 0, 0.5, 0)
