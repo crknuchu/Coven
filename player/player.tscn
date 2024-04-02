@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://b4lx771ljgh3o"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_w8ge0"]
-[ext_resource type="PackedScene" uid="uid://d0ljbgv0glbd8" path="res://Weapons/Knife/melee_weapon.tscn" id="2_7c8h2"]
-[ext_resource type="PackedScene" uid="uid://btalyirujtgrg" path="res://Weapons/Mauser/gun.tscn" id="3_pngbg"]
+[ext_resource type="PackedScene" uid="uid://d0ljbgv0glbd8" path="res://Weapons/Bayonet/bayonet.tscn" id="2_jk6tf"]
+[ext_resource type="PackedScene" uid="uid://btalyirujtgrg" path="res://Weapons/Revolver/gun.tscn" id="3_x5vne"]
 [ext_resource type="PackedScene" uid="uid://ddfxnpo0p5848" path="res://Weapons/Shotgun/shotgun.tscn" id="5_75l4n"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0maa2"]
@@ -43,17 +43,16 @@ gravity = 20.0
 shape = SubResource("CapsuleShape3D_0maa2")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("CapsuleMesh_4pgb5")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 current = true
 
-[node name="Knife" parent="Camera3D" instance=ExtResource("2_7c8h2")]
-
-[node name="Gun" parent="Camera3D" instance=ExtResource("3_pngbg")]
+[node name="Knife" parent="Camera3D" instance=ExtResource("2_jk6tf")]
 visible = false
+
+[node name="Gun" parent="Camera3D" instance=ExtResource("3_x5vne")]
 
 [node name="Shotgun" parent="Camera3D" instance=ExtResource("5_75l4n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.067)

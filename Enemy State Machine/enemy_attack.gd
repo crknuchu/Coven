@@ -3,7 +3,8 @@ class_name EnemyAttack
 
 @onready var enemy: CharacterBody3D = $"../.."
 @onready var player: Player = Global.player
-var timer: float = 0.0
+@onready var timer: float = enemy.attack_cooldown
+@onready var anim_player: AnimationPlayer = $"../../model/AnimationPlayer"
 
 func enter():
 	print("enter attack")
@@ -14,6 +15,7 @@ func update(_delta):
 func physics_update(delta):
 	if timer <= 0:
 		player.hit(enemy.damage)
+		anim_player.play("Eat")
 		timer = enemy.attack_cooldown
 	else:
 		timer -= delta

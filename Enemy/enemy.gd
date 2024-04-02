@@ -8,6 +8,7 @@ class_name Enemy
 @export var attack_range: float = 3.0
 @export var attack_cooldown: float = 3.0
 @export var draw_follow_range: bool = false
+@export var draw_attack_range: bool = false
 
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
@@ -26,13 +27,18 @@ func setup():
 
 func draw_follow_range_sphere():
 	if draw_follow_range:
-		DebugDraw3D.draw_sphere(position,follow_range,Color(1,0,0))
+		DebugDraw3D.draw_sphere(position,follow_range,Color(0,1,0))
+
+func draw_attack_range_sphere():
+	if draw_attack_range:
+		DebugDraw3D.draw_sphere(position,attack_range,Color(1,0,0))
 
 func _physics_process(_delta):
 	if not is_instance_valid(Global.player):
 		return
 	send_raycast()
 	draw_follow_range_sphere()
+	draw_attack_range_sphere()
 
 func send_raycast():
 	vision_raycast.rotation.y = -rotation.y

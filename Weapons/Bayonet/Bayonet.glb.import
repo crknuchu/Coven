@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://blgulgjebsnfd"
-path="res://.godot/imported/knife.glb-64c24c55b0e19ef91f32dfbc609eab54.scn"
+uid="uid://2j5rxlg76bc7"
+path="res://.godot/imported/Bayonet.glb-9b6e1c4deb976a88afa417b2a6dffdeb.scn"
 
 [deps]
 
-source_file="res://Weapons/Knife/knife.glb"
-dest_files=["res://.godot/imported/knife.glb-64c24c55b0e19ef91f32dfbc609eab54.scn"]
+source_file="res://Weapons/Bayonet/Bayonet.glb"
+dest_files=["res://.godot/imported/Bayonet.glb-9b6e1c4deb976a88afa417b2a6dffdeb.scn"]
 
 [params]
 
