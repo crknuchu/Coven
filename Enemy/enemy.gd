@@ -28,8 +28,6 @@ func draw_follow_range_sphere():
 func _physics_process(_delta):
 	if not is_instance_valid(Global.player):
 		return
-	if should_follow():
-		follow()
 	send_raycast()
 	draw_follow_range_sphere()
 

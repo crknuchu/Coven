@@ -53,7 +53,6 @@ current = true
 [node name="Knife" parent="Camera3D" instance=ExtResource("2_7c8h2")]
 
 [node name="Gun" parent="Camera3D" instance=ExtResource("3_pngbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 visible = false
 
 [node name="Shotgun" parent="Camera3D" instance=ExtResource("5_75l4n")]

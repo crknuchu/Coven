@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://clec2clxmfv2a"]
+[gd_scene load_steps=7 format=3 uid="uid://clec2clxmfv2a"]
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_ebcpd"]
 [ext_resource type="PackedScene" uid="uid://daeen7w85knt6" path="res://Enemy/maxdamage_scab-low-poly.gltf" id="2_c24nk"]
+[ext_resource type="Script" path="res://Enemy State Machine/enemy_state_machine.gd" id="3_ygx2s"]
+[ext_resource type="Script" path="res://Enemy State Machine/enemy_idle.gd" id="4_0aq1v"]
+[ext_resource type="Script" path="res://Enemy State Machine/enemy_follow.gd" id="5_esamm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ao6ls"]
 size = Vector3(0.768555, 0.430313, 0.593994)
 
-[node name="Enemy" type="CharacterBody3D"]
+[node name="Crab" type="CharacterBody3D"]
 collision_layer = 8
 collision_mask = 5
 script = ExtResource("1_ebcpd")
@@ -26,3 +29,13 @@ shape = SubResource("BoxShape3D_ao6ls")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 collision_mask = 5
+
+[node name="Enemy State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_ygx2s")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="Enemy State Machine"]
+script = ExtResource("4_0aq1v")
+
+[node name="Follow" type="Node" parent="Enemy State Machine"]
+script = ExtResource("5_esamm")
