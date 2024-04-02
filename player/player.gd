@@ -10,7 +10,7 @@ var gravity = 10.0
 
 @onready var camera: Camera3D = $Camera3D
 @onready var health: float = max_health
-@onready var hitbox = $Camera3D/Hitbox
+@onready var hitbox = $Camera3D/MeleeWeapon/Hitbox
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

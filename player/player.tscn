@@ -1,15 +1,13 @@
 [gd_scene load_steps=5 format=3 uid="uid://b4lx771ljgh3o"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_w8ge0"]
+[ext_resource type="PackedScene" uid="uid://d0ljbgv0glbd8" path="res://Weapons/melee_weapon.tscn" id="2_duwrk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0maa2"]
 radius = 0.3
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4pgb5"]
 radius = 0.3
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lhgwm"]
-size = Vector3(1, 2, 2)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -25,10 +23,9 @@ mesh = SubResource("CapsuleMesh_4pgb5")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 
-[node name="Hitbox" type="Area3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)
-collision_mask = 8
+[node name="MeleeWeapon" parent="Camera3D" instance=ExtResource("2_duwrk")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.598117, -1.51076)
-shape = SubResource("BoxShape3D_lhgwm")
+[node name="Cylinder" parent="Camera3D/MeleeWeapon/knife" index="1"]
+transform = Transform3D(0.46668, 0.884426, 0, -0.884426, 0.46668, 0, 0, 0, 1, 2.78517, -2.24129, -4.04101)
+
+[editable path="Camera3D/MeleeWeapon"]

@@ -6,6 +6,7 @@ extends CharacterBody3D
 @onready var health: float = max_health
 
 func hit(damage):
+	print("enemy hit")
 	health-=damage
 	if is_gibbed(): #gib logic
 		gib()
