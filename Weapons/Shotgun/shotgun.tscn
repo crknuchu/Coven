@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddfxnpo0p5848"]
+
+[ext_resource type="PackedScene" uid="uid://bf6ig3gwrhk17" path="res://Weapons/Shotgun/Shotgun_1.glb" id="1_c3kaq"]
+[ext_resource type="Script" path="res://Weapons/Shotgun/shotgun.gd" id="1_w704p"]
+
+[node name="Shotgun" type="Node3D"]
+script = ExtResource("1_w704p")
+damage = 30.0
+spread = 10.0
+
+[node name="container" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="container"]
+target_position = Vector3(0, 0, -100)
+collision_mask = 8
+
+[node name="RayCast3D2" type="RayCast3D" parent="container"]
+target_position = Vector3(0, 0, -100)
+collision_mask = 8
+
+[node name="RayCast3D3" type="RayCast3D" parent="container"]
+target_position = Vector3(0, 0, -100)
+collision_mask = 8
+
+[node name="RayCast3D4" type="RayCast3D" parent="container"]
+target_position = Vector3(0, 0, -100)
+collision_mask = 8
+
+[node name="RayCast3D5" type="RayCast3D" parent="container"]
+target_position = Vector3(0, 0, -100)
+collision_mask = 8
+
+[node name="shotgun_model" parent="." instance=ExtResource("1_c3kaq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.005)

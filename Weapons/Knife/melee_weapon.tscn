@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://d0ljbgv0glbd8"]
 
-[ext_resource type="Script" path="res://Weapons/Knife/melee_weapon.gd" id="1_lxfmb"]
-[ext_resource type="Texture2D" uid="uid://b05tfb5slwq2k" path="res://Weapons/Knife/knife_knife.png" id="2_j0xga"]
+[ext_resource type="Script" path="res://Weapons/Knife/melee_weapon.gd" id="1_4hr1e"]
+[ext_resource type="Texture2D" uid="uid://b05tfb5slwq2k" path="res://Weapons/Knife/knife_knife.png" id="2_vpb2t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lhgwm"]
 size = Vector3(1, 2, 2)
@@ -9,7 +9,7 @@ size = Vector3(1, 2, 2)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hfhm8"]
 resource_name = "Material.001"
 cull_mode = 2
-albedo_texture = ExtResource("2_j0xga")
+albedo_texture = ExtResource("2_vpb2t")
 roughness = 0.5
 texture_filter = 2
 
@@ -48,7 +48,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qt5on")
 
 [node name="MeleeWeapon" type="Node3D"]
-script = ExtResource("1_lxfmb")
+script = ExtResource("1_4hr1e")
 
 [node name="Hitbox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.2, 0)

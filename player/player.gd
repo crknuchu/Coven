@@ -16,6 +16,7 @@ extends CharacterBody3D
 @onready var ui_health: Label = $HUD/health_val
 @onready var ui_armor: Label = $HUD/armor_val
 @onready var gun = $Camera3D/Gun
+@onready var shotgun = $Camera3D/Shotgun
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -55,9 +56,10 @@ func _process_input():
 		#attack(damage)
 		shoot(damage)
 
-func shoot(damage):
+func shoot(_damage):
 	print("shoot")
-	gun.shoot(damage)
+	shotgun.fire()
+	#gun.shoot(damage)
 
 func attack(damage):
 	for enemy in hitbox.get_overlapping_bodies():
