@@ -11,7 +11,7 @@ extends CharacterBody3D
 @onready var camera: Camera3D = $Camera3D
 @onready var health: float = max_health
 @onready var armor: float = max_armor
-@onready var hitbox = $Camera3D/Knife/Hitbox
+@onready var knife = $Camera3D/Knife
 @onready var ui_health: Label = $HUD/health_val
 @onready var ui_armor: Label = $HUD/armor_val
 @onready var gun = $Camera3D/Gun
@@ -50,19 +50,14 @@ func _unhandled_input(event):
 		rotate_y(-sensitivity*event.relative.x/100.0)
 
 func _process_input():
-	var damage = 50
 	if Input.is_action_just_pressed("attack"):
 		#attack(damage)
-		shoot(damage)
+		shoot()
 
-func shoot(_damage):
+func shoot():
 	print("shoot")
-	gun.fire()
+	knife.fire()
 	#gun.shoot(damage)
-
-func attack(damage):
-	for enemy in hitbox.get_overlapping_bodies():
-		enemy.hit(damage)
 
 func hit(damage):
 	if(armor > 0):
