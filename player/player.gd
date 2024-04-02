@@ -11,12 +11,15 @@ extends CharacterBody3D
 @onready var camera: Camera3D = $Camera3D
 @onready var health: float = max_health
 @onready var armor: float = max_armor
-@onready var hitbox = $Camera3D/MeleeWeapon/Hitbox
+@onready var hitbox = $Camera3D/Knife/Hitbox
 @onready var aimcast = $Camera3D/AimCast
+@onready var ui_health: Label = $HUD/health_val
+@onready var ui_armor: Label = $HUD/armor_val
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Global.player = self
+	update_health_armor()
 	
 func _physics_process(delta):
 	_process_movement(delta)
@@ -70,17 +73,24 @@ func hit(damage):
 			armor = 0
 	else:
 		health -= damage
+	update_health_armor()
 	if is_dead():
 		die()
 
 func heal(ammount):
 	health = maxf(health + ammount, max_health)
+	update_health_armor()
 
 func get_armor(ammount):
 	armor = maxf(armor + ammount, max_armor)
+	update_health_armor()
 
 func is_dead():
 	return health <= 0
 
 func die():
 	print("you died")
+
+func update_health_armor():
+	ui_health.text = str(health)
+	ui_armor.text = str(armor)

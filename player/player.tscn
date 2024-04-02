@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4lx771ljgh3o"]
+[gd_scene load_steps=11 format=3 uid="uid://b4lx771ljgh3o"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_w8ge0"]
 [ext_resource type="PackedScene" uid="uid://d0ljbgv0glbd8" path="res://Weapons/melee_weapon.tscn" id="2_duwrk"]
@@ -9,6 +9,26 @@ radius = 0.3
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_4pgb5"]
 radius = 0.3
+
+[sub_resource type="LabelSettings" id="LabelSettings_qc3ff"]
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lm8sr"]
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_40gst"]
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7y5f2"]
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hoxn8"]
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -41,5 +61,49 @@ transform = Transform3D(-0.17705, 0, -0.984202, 0, 1, 0, 0.984202, 0, -0.17705, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
 target_position = Vector3(0, 0, -100)
 collision_mask = 8
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="armor" type="Label" parent="HUD"]
+offset_left = 21.0
+offset_top = 558.0
+offset_right = 75.0
+offset_bottom = 589.0
+text = "armor:"
+label_settings = SubResource("LabelSettings_qc3ff")
+
+[node name="health" type="Label" parent="HUD"]
+offset_left = 21.0
+offset_top = 598.0
+offset_right = 75.0
+offset_bottom = 629.0
+text = "health:"
+label_settings = SubResource("LabelSettings_lm8sr")
+
+[node name="armor_val" type="Label" parent="HUD"]
+offset_left = 96.0
+offset_top = 558.0
+offset_right = 150.0
+offset_bottom = 589.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_40gst")
+
+[node name="health_val" type="Label" parent="HUD"]
+offset_left = 96.0
+offset_top = 598.0
+offset_right = 150.0
+offset_bottom = 629.0
+text = "0
+"
+label_settings = SubResource("LabelSettings_7y5f2")
+
+[node name="crosshair" type="Label" parent="HUD"]
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "."
+label_settings = SubResource("LabelSettings_hoxn8")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [editable path="Camera3D/Knife"]
