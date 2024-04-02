@@ -53,3 +53,14 @@ func _process_input():
 func attack(damage):
 	for enemy in hitbox.get_overlapping_bodies():
 		enemy.hit(damage)
+
+func hit(damage):
+	health -= damage
+	if is_dead():
+		die()
+
+func is_dead():
+	return health <= 0
+
+func die():
+	print("you died")
