@@ -12,7 +12,6 @@ extends CharacterBody3D
 @onready var health: float = max_health
 @onready var armor: float = max_armor
 @onready var hitbox = $Camera3D/Knife/Hitbox
-@onready var aimcast = $Camera3D/AimCast
 @onready var ui_health: Label = $HUD/health_val
 @onready var ui_armor: Label = $HUD/armor_val
 @onready var gun = $Camera3D/Gun
@@ -58,7 +57,7 @@ func _process_input():
 
 func shoot(_damage):
 	print("shoot")
-	shotgun.fire()
+	gun.fire()
 	#gun.shoot(damage)
 
 func attack(damage):

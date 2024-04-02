@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://b4lx771ljgh3o"]
+[gd_scene load_steps=12 format=3 uid="uid://b4lx771ljgh3o"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_w8ge0"]
 [ext_resource type="PackedScene" uid="uid://d0ljbgv0glbd8" path="res://Weapons/Knife/melee_weapon.tscn" id="2_7c8h2"]
 [ext_resource type="PackedScene" uid="uid://btalyirujtgrg" path="res://Weapons/Mauser/gun.tscn" id="3_pngbg"]
-[ext_resource type="Script" path="res://Weapons/Mauser/gun.gd" id="4_145a0"]
 [ext_resource type="PackedScene" uid="uid://ddfxnpo0p5848" path="res://Weapons/Shotgun/shotgun.tscn" id="5_75l4n"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0maa2"]
@@ -55,18 +54,11 @@ current = true
 visible = false
 
 [node name="Gun" parent="Camera3D" instance=ExtResource("3_pngbg")]
-transform = Transform3D(-0.17705, 0, -0.984202, 0, 1, 0, 0.984202, 0, -0.17705, 1.00414, -0.553071, -1.13792)
-visible = false
-script = ExtResource("4_145a0")
-
-[node name="AimCast" type="RayCast3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
-visible = false
-target_position = Vector3(0, 0, -100)
-collision_mask = 8
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Shotgun" parent="Camera3D" instance=ExtResource("5_75l4n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, -0.0671328)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.067)
+visible = false
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

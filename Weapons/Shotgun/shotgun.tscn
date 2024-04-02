@@ -9,7 +9,7 @@ damage = 30.0
 spread = 10.0
 
 [node name="container" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="container"]
 target_position = Vector3(0, 0, -100)
@@ -32,4 +32,4 @@ target_position = Vector3(0, 0, -100)
 collision_mask = 8
 
 [node name="shotgun_model" parent="." instance=ExtResource("1_c3kaq")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0.005)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)

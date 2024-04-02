@@ -1,9 +1,10 @@
 extends Node3D
 
-@onready var aimcast = get_parent().get_node("AimCast")
+@onready var r = $RayCast3D
+@export var damage = 50
 
-func fire(damage):
-	if aimcast.is_colliding():
-		var enemy = aimcast.get_collider()
+func fire():
+	if r.is_colliding():
+		var enemy = r.get_collider()
 		enemy.hit(damage)
 		
