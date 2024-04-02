@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://cla3k8tja00vn"]
 
 [ext_resource type="PackedScene" uid="uid://b4lx771ljgh3o" path="res://player/player.tscn" id="1_it88j"]
-[ext_resource type="PackedScene" uid="uid://b7343ijlf47lc" path="res://Global/Global.tscn" id="2_8s6q5"]
+[ext_resource type="Script" path="res://Global/Global.gd" id="1_py6te"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7yr8e"]
 size = Vector3(100, 1, 100)
@@ -20,8 +20,7 @@ background_mode = 2
 sky = SubResource("Sky_d275a")
 
 [node name="test" type="Node3D"]
-
-[node name="Global" parent="." instance=ExtResource("2_8s6q5")]
+script = ExtResource("1_py6te")
 
 [node name="Level" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

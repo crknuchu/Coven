@@ -22,7 +22,7 @@ func _process_movement(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		
 	var input_dir = Input.get_vector(
@@ -36,6 +36,12 @@ func _process_movement(delta):
 	velocity = Vector3(v3.x, velocity.y, v3.y)
 	
 	move_and_slide()
+
+func _unhandled_input(event):
+	if event is InputEventMouseMotion:
+		camera.rotate_x(-sensitivity*event.relative.y/100.0)
+		camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, -90, 90)
+		rotate_y(-sensitivity*event.relative.x/100.0)
 
 func _process_input():
 	pass
