@@ -4,8 +4,11 @@ class_name Enemy
 @export var max_health: float = 100.0
 @export var damage: float = 20.0
 @export var speed: float = 5.0
-@export var follow_range: float = 5
+@export var follow_range: float = 5.0
+@export var attack_range: float = 3.0
+@export var attack_cooldown: float = 3.0
 @export var draw_follow_range: bool = false
+
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var vision_raycast: RayCast3D = $RayCast3D
@@ -47,6 +50,11 @@ func follow():
 
 func should_follow():
 	return global_position.distance_to(Global.player.global_position) < follow_range \
+		and vision_raycast.is_colliding() \
+		and vision_raycast.get_collider() is Player
+	
+func should_attack():
+	return global_position.distance_to(Global.player.global_position) < attack_range \
 		and vision_raycast.is_colliding() \
 		and vision_raycast.get_collider() is Player
 

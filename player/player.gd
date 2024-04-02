@@ -60,6 +60,7 @@ func shoot():
 	#gun.shoot(damage)
 
 func hit(damage):
+	print("get hit")
 	if(armor > 0):
 		if(armor > damage):
 			armor -= damage

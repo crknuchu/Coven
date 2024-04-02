@@ -15,3 +15,6 @@ func physics_update(_delta):
 	
 	if not enemy.should_follow():
 		transitioned.emit(self, "idle")
+	
+	if enemy.should_attack():
+		transitioned.emit(self, "attack")
