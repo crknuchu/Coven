@@ -12,6 +12,7 @@ extends CharacterBody3D
 @onready var health: float = max_health
 @onready var armor: float = max_armor
 @onready var hitbox = $Camera3D/MeleeWeapon/Hitbox
+@onready var aimcast = $Camera3D/AimCast
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -47,7 +48,14 @@ func _unhandled_input(event):
 func _process_input():
 	var damage = 50
 	if Input.is_action_just_pressed("attack"):
-		attack(damage)
+		#attack(damage)
+		shoot(damage)
+
+func shoot(damage):
+	print("shoot")
+	if aimcast.is_colliding():
+		var enemy = aimcast.get_collider()
+		enemy.hit(damage)
 
 func attack(damage):
 	for enemy in hitbox.get_overlapping_bodies():

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://btalyirujtgrg"]
+
+[ext_resource type="PackedScene" uid="uid://dt3erqj4ac00q" path="res://Weapons/mauser.glb" id="1_ql3xa"]
+
+[node name="Gun" type="Node3D"]
+
+[node name="mauser" parent="." instance=ExtResource("1_ql3xa")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
