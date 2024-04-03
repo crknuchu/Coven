@@ -37,6 +37,9 @@ collision_mask = 30
 script = ExtResource("1_w8ge0")
 movement_speed = 10.0
 sensitivity = 0.4
+max_health = null
+max_armor = null
+jump_velocity = null
 gravity = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

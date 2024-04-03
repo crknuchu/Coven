@@ -11,7 +11,7 @@ func enter():
 func update(_delta):
 	pass
 
-func physics_update(delta):
+func physics_update(_delta):
 	enemy.wander()
 	#anim_player.play("Walk")
 	await get_tree().create_timer(enemy.wander_cooldown).timeout 

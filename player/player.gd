@@ -17,6 +17,10 @@ extends CharacterBody3D
 @onready var gun = $Camera3D/Gun
 @onready var shotgun = $Camera3D/Shotgun
 
+var has_red_key: bool = false
+var has_blue_key: bool = false
+var has_yellow_key: bool = false
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Global.player = self
