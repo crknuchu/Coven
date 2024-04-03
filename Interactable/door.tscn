@@ -1,11 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://hgcbadp2cn5a"]
+[gd_scene load_steps=6 format=3 uid="uid://hgcbadp2cn5a"]
 
 [ext_resource type="Script" path="res://Interactable/door.gd" id="1_qplq5"]
 [ext_resource type="Script" path="res://Interactable/Interactable.gd" id="2_w4a34"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pwu1g"]
+size = Vector3(1, 2, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylwfe"]
+albedo_color = Color(0.25098, 0.133333, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_x1qom"]
+material = SubResource("StandardMaterial3D_ylwfe")
+size = Vector3(1, 2, 0.3)
 
 [node name="Door" type="Node3D"]
 script = ExtResource("1_qplq5")
