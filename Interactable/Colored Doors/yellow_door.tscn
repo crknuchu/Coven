@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkjrr0bn5tim1"]
+
+[ext_resource type="Script" path="res://Interactable/Colored Doors/yellow_door.gd" id="1_qeyhh"]
+[ext_resource type="Script" path="res://Interactable/Interactable.gd" id="2_tne44"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wn3u8"]
+size = Vector3(1, 3, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ovwam"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xy4vr"]
+material = SubResource("StandardMaterial3D_ovwam")
+size = Vector3(1, 3, 0.3)
+
+[node name="Yellow Door" type="Node3D"]
+script = ExtResource("1_qeyhh")
+
+[node name="Interactable" type="StaticBody3D" parent="."]
+script = ExtResource("2_tne44")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+shape = SubResource("BoxShape3D_wn3u8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_xy4vr")

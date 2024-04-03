@@ -3,5 +3,5 @@ class_name Interactable
 
 signal interacted
 
-func on_interact(player: Player):
+func on_interact(_player: Player):
 	interacted.emit()
