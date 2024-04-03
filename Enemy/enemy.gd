@@ -7,10 +7,12 @@ class_name Enemy
 @export var follow_range: float = 5.0
 @export var attack_range: float = 3.0
 @export var attack_cooldown: float = 3.0
+@export var wander_cooldown: float = 3.0
 @export var draw_follow_range: bool = false
 @export var draw_attack_range: bool = false
+@onready var has_attacked: bool = false
 
-
+@onready var attack_hitbox: Area3D = $"Attack Hitbox"
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var vision_raycast: RayCast3D = $RayCast3D
 @onready var health: float = max_health
@@ -54,6 +56,17 @@ func follow():
 	
 	move_and_slide()
 
+func wander():
+	var target_pos = Vector3(100, 0, 100)
+	nav_agent.set_target_position(target_pos)
+	var next_nav_point = nav_agent.get_next_path_position()
+	velocity = (next_nav_point - global_position).normalized() * speed
+	
+	rotation.y = -Vector2(global_position.x, global_position.z) \
+		.angle_to_point(Vector2(target_pos.x, target_pos.z)) + PI/2.0
+	
+	move_and_slide()
+
 func should_follow():
 	return global_position.distance_to(Global.player.global_position) < follow_range \
 		and vision_raycast.is_colliding() \
@@ -63,6 +76,9 @@ func should_attack():
 	return global_position.distance_to(Global.player.global_position) < attack_range \
 		and vision_raycast.is_colliding() \
 		and vision_raycast.get_collider() is Player
+
+func should_wander():
+	return has_attacked
 
 func hit(player_damage):
 	print("enemy hit")
@@ -87,4 +103,6 @@ func is_dead():
 	return health <= 0
 	
 func attack():
-	Global.player.hit(damage)
+	for body in attack_hitbox.get_overlapping_bodies():
+		if body is Player:
+			body.hit(damage)

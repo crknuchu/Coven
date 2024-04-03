@@ -51,13 +51,11 @@ func _unhandled_input(event):
 
 func _process_input():
 	if Input.is_action_just_pressed("attack"):
-		#attack(damage)
 		shoot()
 
 func shoot():
 	print("shoot")
 	knife.fire()
-	#gun.shoot(damage)
 
 func hit(damage):
 	print("get hit")
