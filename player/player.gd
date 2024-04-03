@@ -16,6 +16,7 @@ extends CharacterBody3D
 @onready var ui_armor: Label = $HUD/armor_val
 @onready var gun = $Camera3D/Gun
 @onready var shotgun = $Camera3D/Shotgun
+@onready var interact_raycast: RayCast3D = $Camera3D/RayCast3D
 
 var has_red_key: bool = false
 var has_blue_key: bool = false
@@ -28,6 +29,7 @@ func _ready():
 	
 func _physics_process(delta):
 	_process_movement(delta)
+	_process_interacting()
 	_process_input()
 
 func _process_movement(delta):
@@ -92,3 +94,12 @@ func die():
 func update_health_armor():
 	ui_health.text = str(health)
 	ui_armor.text = str(armor)
+
+func interact():
+	var interactable: Interactable = interact_raycast.get_collider()
+	interactable.on_interact(self)
+
+func _process_interacting():
+	#interact_label.visible = interact_raycast.is_colliding() and interact_raycast.get_collider() is Interactable
+	if Input.is_action_just_pressed("interact") and interact_raycast.is_colliding() and interact_raycast.get_collider() is Interactable:
+		interact()

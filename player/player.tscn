@@ -37,9 +37,6 @@ collision_mask = 30
 script = ExtResource("1_w8ge0")
 movement_speed = 10.0
 sensitivity = 0.4
-max_health = null
-max_armor = null
-jump_velocity = null
 gravity = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -60,6 +57,9 @@ visible = false
 [node name="Shotgun" parent="Camera3D" instance=ExtResource("5_75l4n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, -0.067)
 visible = false
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -3)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

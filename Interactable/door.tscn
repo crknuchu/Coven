@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://hgcbadp2cn5a"]
+
+[ext_resource type="Script" path="res://Interactable/door.gd" id="1_qplq5"]
+[ext_resource type="Script" path="res://Interactable/Interactable.gd" id="2_w4a34"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pwu1g"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_x1qom"]
+
+[node name="Door" type="Node3D"]
+script = ExtResource("1_qplq5")
+
+[node name="Interactable" type="StaticBody3D" parent="."]
+script = ExtResource("2_w4a34")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+shape = SubResource("BoxShape3D_pwu1g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_x1qom")
