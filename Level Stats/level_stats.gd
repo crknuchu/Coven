@@ -5,7 +5,9 @@ extends CanvasLayer
 
 
 @export var par_time: int
-@export var is_visible: bool = false
+@export var is_visible: bool = true
+@export var display_message_time: float = 2.0
+@export var secret_message: String
 
 @onready var max_kills: int = 0
 @onready var max_secrets: int = 0
@@ -35,7 +37,7 @@ func _ready():
 func _update_secrets():
 	secrets += 1
 	update_secrets_label()
-	display_message("you have found a secret")
+	display_message(secret_message)
 
 func _update_kills():
 	kills += 1
@@ -52,15 +54,11 @@ func update_level_label():
 
 func display_message(message: String):
 	message_label.text = message
-	await get_tree().create_timer(2).timeout 
+	await get_tree().create_timer(display_message_time).timeout 
 	message_label.text = ""
 
 func _process(_delta):
 	if Input.is_action_just_pressed("toggle_level_stats"):
 		is_visible = !is_visible
-		self.visible = is_visible		
-	 
-
-
+		visible = is_visible
 		
-	

@@ -157,7 +157,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -9)
 script = ExtResource("13_fryl4")
 level_name = "test level"
 difficulty = "normal"
-secret_message = "you have found a secret!"
 
 [node name="level text" type="Label" parent="Level Stats"]
 offset_right = 40.0
