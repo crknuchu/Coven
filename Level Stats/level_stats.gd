@@ -1,11 +1,11 @@
-extends Node
+extends CanvasLayer
 
 @export var level_name: String
 @export var difficulty: String
 
 
 @export var par_time: int
-@export var visible: bool = false
+@export var is_visible: bool = false
 
 @onready var max_kills: int = 0
 @onready var max_secrets: int = 0
@@ -13,12 +13,11 @@ extends Node
 @onready var kills: int = 0
 @onready var time: int = 0
 @onready var enemies: Node3D = $"../Enemies"
-@onready var level_text_label: Label = $"CanvasLayer/level text"
-@onready var secrets_label: Label = $CanvasLayer/secrets
-@onready var kills_label: Label =  $CanvasLayer/kills
-@onready var canvas_layer = $CanvasLayer
+@onready var level_text_label: Label = $"level text"
+@onready var secrets_label: Label = $secrets
+@onready var kills_label: Label =  $kills
 @onready var secrets_items = $"../Secrets"
-@onready var message_label = $CanvasLayer/message
+@onready var message_label = $message
 
 func _ready():
 	for enemy in enemies.get_children():
@@ -58,9 +57,9 @@ func display_message(message: String):
 
 func _process(_delta):
 	if Input.is_action_just_pressed("toggle_level_stats"):
-		visible = !visible
-			
-	canvas_layer.visible = visible 
+		is_visible = !is_visible
+		self.visible = is_visible		
+	 
 
 
 		

@@ -154,9 +154,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -9)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -9)
 
 [node name="Level Stats" type="CanvasLayer" parent="."]
+visible = true
 script = ExtResource("13_fryl4")
-level_name = "test level"
-difficulty = "normal"
+level_name = null
+difficulty = null
+par_time = null
+visible = true
 
 [node name="level text" type="Label" parent="Level Stats"]
 offset_right = 40.0
