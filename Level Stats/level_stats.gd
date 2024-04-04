@@ -15,13 +15,22 @@ extends Node
 @onready var secrets_label: Label = $CanvasLayer/secrets
 @onready var kills_label: Label =  $CanvasLayer/kills
 @onready var canvas_layer = $CanvasLayer
+@onready var secret = $"../Secret"
 
 func _ready():
 	for enemy in enemies.get_children():
 		enemy.enemy_killed.connect(_update_kills)
 	
+	secret.secret_found.connect(_update_secrets)
+	
+	
+	
 	update_kills_label()
 	update_level_label()
+	update_secrets_label()
+
+func _update_secrets():
+	secrets += 1
 	update_secrets_label()
 
 func _update_kills():

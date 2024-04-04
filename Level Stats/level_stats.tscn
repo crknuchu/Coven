@@ -4,8 +4,3 @@
 
 [node name="Level Stats" type="Node"]
 script = ExtResource("1_d0pgh")
-level_name = null
-difficulty = null
-max_secrets = null
-max_kills = null
-par_time = null
