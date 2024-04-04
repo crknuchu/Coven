@@ -18,6 +18,7 @@ extends Node
 @onready var kills_label: Label =  $CanvasLayer/kills
 @onready var canvas_layer = $CanvasLayer
 @onready var secrets_items = $"../Secrets"
+@onready var message_label = $CanvasLayer/message
 
 func _ready():
 	for enemy in enemies.get_children():
@@ -35,6 +36,7 @@ func _ready():
 func _update_secrets():
 	secrets += 1
 	update_secrets_label()
+	display_message("you have found a secret")
 
 func _update_kills():
 	kills += 1
@@ -49,10 +51,17 @@ func update_secrets_label():
 func update_level_label():
 	level_text_label.text = str(level_name) + " - " + str(difficulty)
 
+func display_message(message: String):
+	message_label.text = message
+	await get_tree().create_timer(2).timeout 
+	message_label.text = ""
+
 func _process(_delta):
 	if Input.is_action_just_pressed("toggle_level_stats"):
 		visible = !visible
-	
+			
 	canvas_layer.visible = visible 
+
+
 		
 	
