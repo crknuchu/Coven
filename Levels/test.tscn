@@ -124,8 +124,7 @@ mesh = SubResource("BoxMesh_msmxg")
 [node name="Level Stats" parent="." instance=ExtResource("12_4hi1i")]
 level_name = "test level"
 difficulty = "normal"
-max_secrets = 1
-max_kills = 1
+visible = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Level Stats"]
 
@@ -175,5 +174,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -9)
 [node name="Blue Door2" parent="." instance=ExtResource("10_suy35")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -9)
 
-[node name="Secret" parent="." instance=ExtResource("13_51n68")]
+[node name="Secrets" type="Node3D" parent="."]
+
+[node name="Secret" parent="Secrets" instance=ExtResource("13_51n68")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -9)

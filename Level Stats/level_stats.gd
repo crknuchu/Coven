@@ -2,11 +2,13 @@ extends Node
 
 @export var level_name: String
 @export var difficulty: String
-@export var max_secrets: int
-@export var max_kills: int
+
+
 @export var par_time: int
 @export var visible: bool = false
 
+@onready var max_kills: int = 0
+@onready var max_secrets: int = 0
 @onready var secrets: int = 0
 @onready var kills: int = 0
 @onready var time: int = 0
@@ -15,16 +17,17 @@ extends Node
 @onready var secrets_label: Label = $CanvasLayer/secrets
 @onready var kills_label: Label =  $CanvasLayer/kills
 @onready var canvas_layer = $CanvasLayer
-@onready var secret = $"../Secret"
+@onready var secrets_items = $"../Secrets"
 
 func _ready():
 	for enemy in enemies.get_children():
 		enemy.enemy_killed.connect(_update_kills)
+		max_kills += 1
 	
-	secret.secret_found.connect(_update_secrets)
-	
-	
-	
+	for secret_item in secrets_items.get_children():
+		secret_item.secret_found.connect(_update_secrets)
+		max_secrets += 1
+		
 	update_kills_label()
 	update_level_label()
 	update_secrets_label()
