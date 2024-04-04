@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cla3k8tja00vn"]
+[gd_scene load_steps=22 format=3 uid="uid://cla3k8tja00vn"]
 
 [ext_resource type="PackedScene" uid="uid://b4lx771ljgh3o" path="res://Player/player.tscn" id="1_7xsqm"]
 [ext_resource type="PackedScene" uid="uid://clec2clxmfv2a" path="res://Enemy/enemy.tscn" id="2_vdbbj"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://daprc6mgk651l" path="res://Interactable/Colored Doors/red_door.tscn" id="9_lf4a5"]
 [ext_resource type="PackedScene" uid="uid://cldmey8jdgqjw" path="res://Interactable/Colored Doors/blue_door.tscn" id="10_suy35"]
 [ext_resource type="PackedScene" uid="uid://dkjrr0bn5tim1" path="res://Interactable/Colored Doors/yellow_door.tscn" id="11_4pwff"]
+[ext_resource type="PackedScene" uid="uid://cp7uw5212y3mh" path="res://Level Stats/level_stats.tscn" id="12_4hi1i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xqhdl"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -57,9 +58,6 @@ environment = SubResource("Environment_i7tas")
 
 [node name="Player" parent="." instance=ExtResource("1_7xsqm")]
 transform = Transform3D(0.039504, 0, -0.999219, 0, 1, 0, 0.999219, 0, 0.039504, 3.05654, 0.5, -6.0324)
-
-[node name="Enemy" parent="." instance=ExtResource("2_vdbbj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -0.48932, 0)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -122,18 +120,51 @@ shape = SubResource("BoxShape3D_kb16c")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Level/Box4"]
 mesh = SubResource("BoxMesh_msmxg")
 
+[node name="Level Stats" parent="." instance=ExtResource("12_4hi1i")]
+level_name = "test level"
+difficulty = "normal"
+max_secrets = 1
+max_kills = 1
+par_time = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Level Stats"]
+
+[node name="level text" type="Label" parent="Level Stats/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "test"
+
+[node name="secrets" type="Label" parent="Level Stats/CanvasLayer"]
+offset_left = 1.0
+offset_top = 29.0
+offset_right = 41.0
+offset_bottom = 52.0
+text = "secrets"
+
+[node name="kills" type="Label" parent="Level Stats/CanvasLayer"]
+offset_left = 2.0
+offset_top = 62.0
+offset_right = 42.0
+offset_bottom = 85.0
+text = "kills"
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("2_vdbbj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -0.48932, 0)
+
 [node name="Red Key" parent="." instance=ExtResource("4_x1iu5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -9)
 
 [node name="Blue Key" parent="." instance=ExtResource("5_cp3y0")]
-transform = Transform3D(1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, -3, 0, -9)
+transform = Transform3D(1, 0, 0, 0, 4.47035e-08, 1, 0, -1, 4.47035e-08, -3, 0, -9)
 
 [node name="Yellow Key" parent="." instance=ExtResource("6_bkaxp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -9)
 script = ExtResource("7_d1ipe")
 
 [node name="Door" parent="." instance=ExtResource("8_dju02")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.512619, -9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.51262, -9)
 
 [node name="Yellow Door" parent="." instance=ExtResource("11_4pwff")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -9)

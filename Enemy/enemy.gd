@@ -1,6 +1,8 @@
 extends CharacterBody3D
 class_name Enemy
 
+signal enemy_killed
+
 @export var max_health: float = 100.0
 @export var damage: float = 20.0
 @export var speed: float = 5.0
@@ -90,6 +92,7 @@ func hit(player_damage):
 	
 func die():
 	print("enemy died")
+	enemy_killed.emit()
 	queue_free()
 
 func gib():
