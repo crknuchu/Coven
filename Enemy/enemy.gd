@@ -15,6 +15,7 @@ signal enemy_killed
 @onready var has_attacked: bool = false
 
 @onready var attack_hitbox: Area3D = $"Attack Hitbox"
+@onready var attack_hitbox2: Area3D = $"Attack Hitbox2"
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var vision_raycast: RayCast3D = $RayCast3D
 @onready var health: float = max_health
@@ -42,7 +43,7 @@ func _physics_process(_delta):
 		return
 	send_raycast()
 	draw_follow_range_sphere()
-	draw_attack_range_sphere()
+	#draw_attack_range_sphere()
 
 func send_raycast():
 	vision_raycast.rotation.y = -rotation.y
@@ -58,8 +59,8 @@ func follow():
 	
 	move_and_slide()
 
-func wander():
-	var target_pos = Vector3(100, 0, 100)
+func wander(target_pos: Vector3):
+	#var target_pos = Vector3(100, 0, 100)
 	nav_agent.set_target_position(target_pos)
 	var next_nav_point = nav_agent.get_next_path_position()
 	velocity = (next_nav_point - global_position).normalized() * speed
@@ -75,9 +76,13 @@ func should_follow():
 		and vision_raycast.get_collider() is Player
 	
 func should_attack():
-	return global_position.distance_to(Global.player.global_position) < attack_range \
-		and vision_raycast.is_colliding() \
-		and vision_raycast.get_collider() is Player
+	#return global_position.distance_to(Global.player.global_position) < attack_range \
+		#and vision_raycast.is_colliding() \
+		#and vision_raycast.get_collider() is Player
+	for body in attack_hitbox2.get_overlapping_bodies():
+		if body is Player:
+			return true
+	return false
 
 func should_wander():
 	return has_attacked
@@ -106,6 +111,7 @@ func is_dead():
 	return health <= 0
 	
 func attack():
+	has_attacked = true
 	for body in attack_hitbox.get_overlapping_bodies():
 		if body is Player:
 			body.hit(damage)

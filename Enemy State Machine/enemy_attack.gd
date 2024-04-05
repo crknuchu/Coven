@@ -8,21 +8,15 @@ class_name EnemyAttack
 
 func enter():
 	print("enter attack")
+	await get_tree().create_timer(enemy.attack_cooldown).timeout 
+	enemy.attack()
 
 func update(_delta):
 	pass
 
-func physics_update(delta):
-	if timer <= 0:
-		enemy.attack()
-		#enemy.has_attacked = true
-		#anim_player.play("Rat_Attack")
-		timer = enemy.attack_cooldown
-	else:
-		timer -= delta
-	
-	#if enemy.should_wander():
-		#transitioned.emit(self, "wander")
+func physics_update(_delta):
+	if enemy.should_wander():
+		transitioned.emit(self, "wander")
 	
 	if not enemy.should_attack():
 		transitioned.emit(self, "follow")
