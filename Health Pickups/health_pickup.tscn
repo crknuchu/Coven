@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://85x6hyfc01x8"]
+[gd_scene load_steps=5 format=3 uid="uid://bmn24n7sgu4jw"]
 
-[ext_resource type="Script" path="res://Secret/secret.gd" id="1_80nn1"]
+[ext_resource type="Script" path="res://Health Pickups/health_pickup.gd" id="1_80nn1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qljxj"]
 
@@ -10,10 +10,12 @@ albedo_color = Color(1, 0, 1, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_v35an"]
 material = SubResource("StandardMaterial3D_3v1fd")
 
-[node name="Secret" type="Node3D"]
+[node name="Health Pickup" type="Node3D"]
 script = ExtResource("1_80nn1")
+ammout = 10
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_qljxj")

@@ -78,12 +78,14 @@ func hit(damage):
 		die()
 
 func heal(ammount):
-	health = maxf(health + ammount, max_health)
+	health = minf(health + ammount, max_health)
 	update_health_armor()
+	print("heal for " + str(ammount))
 
 func get_armor(ammount):
-	armor = maxf(armor + ammount, max_armor)
+	armor = minf(armor + ammount, max_armor)
 	update_health_armor()
+	print("get armor for " + str(ammount))
 
 func is_dead():
 	return health <= 0

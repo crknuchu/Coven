@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cla3k8tja00vn"]
+[gd_scene load_steps=25 format=3 uid="uid://cla3k8tja00vn"]
 
 [ext_resource type="PackedScene" uid="uid://b4lx771ljgh3o" path="res://Player/player.tscn" id="1_7xsqm"]
 [ext_resource type="PackedScene" uid="uid://clec2clxmfv2a" path="res://Enemy/enemy.tscn" id="2_vdbbj"]
@@ -11,8 +11,10 @@
 [ext_resource type="PackedScene" uid="uid://daprc6mgk651l" path="res://Interactable/Colored Doors/red_door.tscn" id="9_lf4a5"]
 [ext_resource type="PackedScene" uid="uid://cldmey8jdgqjw" path="res://Interactable/Colored Doors/blue_door.tscn" id="10_suy35"]
 [ext_resource type="PackedScene" uid="uid://dkjrr0bn5tim1" path="res://Interactable/Colored Doors/yellow_door.tscn" id="11_4pwff"]
-[ext_resource type="PackedScene" uid="uid://dfqf3t8wef65a" path="res://Secret/secret.tscn" id="13_51n68"]
+[ext_resource type="PackedScene" uid="uid://85x6hyfc01x8" path="res://Secret/secret.tscn" id="13_51n68"]
 [ext_resource type="Script" path="res://Level Stats/level_stats.gd" id="13_fryl4"]
+[ext_resource type="PackedScene" uid="uid://bmn24n7sgu4jw" path="res://Health Pickups/health_pickup.tscn" id="14_713qp"]
+[ext_resource type="PackedScene" uid="uid://brto8yumo5arn" path="res://Armor Pickups/armor_pickup.tscn" id="15_qosjt"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xqhdl"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -183,3 +185,9 @@ offset_left = 537.0
 offset_top = 317.0
 offset_right = 577.0
 offset_bottom = 340.0
+
+[node name="Health Pickup" parent="." instance=ExtResource("14_713qp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12392, 0.5, 0.117378)
+
+[node name="Armor Pickup" parent="." instance=ExtResource("15_qosjt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28875, 0.5, -1.91044)
