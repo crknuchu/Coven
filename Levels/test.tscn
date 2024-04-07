@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://Level Stats/level_stats.gd" id="13_fryl4"]
 [ext_resource type="PackedScene" uid="uid://bmn24n7sgu4jw" path="res://Health Pickups/health_pickup.tscn" id="14_713qp"]
 [ext_resource type="PackedScene" uid="uid://brto8yumo5arn" path="res://Armor Pickups/armor_pickup.tscn" id="15_qosjt"]
-[ext_resource type="PackedScene" uid="uid://crnlsdm556ogc" path="res://Enemy/bullet.tscn" id="16_foeet"]
+[ext_resource type="PackedScene" uid="uid://cn6cftxs30fdm" path="res://Enemy/ranged_enemy.tscn" id="17_f3lbq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xqhdl"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -193,5 +193,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12392, 0.5, 0.117378)
 [node name="Armor Pickup" parent="." instance=ExtResource("15_qosjt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28875, 0.5, -1.91044)
 
-[node name="Bullet" parent="." instance=ExtResource("16_foeet")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 7)
+[node name="Ranged Enemy" parent="." instance=ExtResource("17_f3lbq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)

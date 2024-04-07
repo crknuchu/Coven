@@ -1,24 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://crnlsdm556ogc"]
+[gd_scene load_steps=3 format=3 uid="uid://crnlsdm556ogc"]
 
 [ext_resource type="Script" path="res://Enemy/bullet.gd" id="1_mombd"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mrv3q"]
 radius = 0.1
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l8ftf"]
-radius = 0.1
-
-[node name="Bullet" type="CharacterBody3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-collision_layer = 8
+[node name="Bullet" type="Node3D"]
 script = ExtResource("1_mombd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(1.91069e-16, 4.37114e-09, -0.1, 0.1, -4.37114e-09, 0, -4.37114e-09, -0.1, -4.37114e-09, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_mrv3q")
+skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(-4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, 0, 0, 0.1, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_l8ftf")
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -0.1)
+collision_mask = 5

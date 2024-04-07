@@ -14,11 +14,13 @@ signal enemy_killed
 @export var draw_attack_range: bool = false
 @onready var has_attacked: bool = false
 
-@onready var attack_hitbox: Area3D = $"Attack Hitbox"
-@onready var attack_hitbox2: Area3D = $"Attack Hitbox2"
+#@onready var attack_hitbox: Area3D = $"Attack Hitbox"
+#@onready var attack_hitbox2: Area3D = $"Attack Hitbox2"
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var vision_raycast: RayCast3D = $RayCast3D
 @onready var health: float = max_health
+
+@onready var bullet = load("res://Enemy/bullet.tscn")
 
 func _ready():
 	#wait 1 frame so the map can load and avoid errors
@@ -76,13 +78,13 @@ func should_follow():
 		and vision_raycast.get_collider() is Player
 	
 func should_attack():
-	#return global_position.distance_to(Global.player.global_position) < attack_range \
-		#and vision_raycast.is_colliding() \
-		#and vision_raycast.get_collider() is Player
-	for body in attack_hitbox2.get_overlapping_bodies():
-		if body is Player:
-			return true
-	return false
+	return global_position.distance_to(Global.player.global_position) < attack_range \
+		and vision_raycast.is_colliding() \
+		and vision_raycast.get_collider() is Player
+	#for body in attack_hitbox2.get_overlapping_bodies():
+		#if body is Player:
+			#return true
+	#return false
 
 func should_wander():
 	return has_attacked
@@ -111,7 +113,8 @@ func is_dead():
 	return health <= 0
 	
 func attack():
-	has_attacked = true
-	for body in attack_hitbox.get_overlapping_bodies():
-		if body is Player:
-			body.hit(damage)
+	print("attack")
+	var instance = bullet.instantiate()
+	instance.position = global_position
+	instance.transform.basis = global_transform.basis
+	get_parent().add_child(instance)
