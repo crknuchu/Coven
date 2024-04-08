@@ -2,8 +2,8 @@ extends Node3D
 
 @export var damage: float = 20
 @export var spread: float = 5
-@export var max_ammo: int = 50
-@export var ammo: int = 20
+@export var max_ammo: float = 50
+@export var ammo: float = 20
 
 @onready var container = $container
 
@@ -24,5 +24,5 @@ func shoot():
 		ammo -= 1
 	print(ammo)
 
-func add_ammo(ammount: int):
+func add_ammo(ammount: float):
 	ammo = minf(ammo + ammount, max_ammo)

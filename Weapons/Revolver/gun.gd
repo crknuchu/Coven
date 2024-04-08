@@ -1,10 +1,10 @@
 extends Node3D
 
 @onready var r = $RayCast3D
-@export var damage: int = 50
-@export var max_ammo: int = 50
+@export var damage: float = 50
+@export var max_ammo: float = 50
 
-@export var ammo: int = 20
+@export var ammo: float = 20
 
 #func _ready():
 		#print(ammo)
@@ -17,6 +17,6 @@ func shoot():
 		ammo -= 1
 		print(ammo)
 
-func add_ammo(ammount: int):
+func add_ammo(ammount: float):
 	ammo = minf(ammo + ammount, max_ammo)
 			
