@@ -10,10 +10,8 @@ enum weapons_enum {
 @onready var current_weapon = weapons[0]
 
 func _ready():
-	print(weapons)
-	#var tmp = {}
-	#for weapon in weapons:
-		
+	#print(weapons)
+	pass
 
 func shoot():
 	current_weapon.shoot()

@@ -1,10 +1,19 @@
 extends Node3D
 
 @onready var r = $RayCast3D
-@export var damage = 50
+@export var damage: int = 50
+@export var max_ammo: int = 50
+
+@export var ammo: int = 20
+
+func _ready():
+		print(ammo)
 
 func shoot():
-	if r.is_colliding():
-		var enemy = r.get_collider()
-		enemy.hit(damage)
-		
+	if ammo >= 1:
+		if r.is_colliding():
+			var enemy = r.get_collider()
+			enemy.hit(damage)
+		ammo -= 1
+		print(ammo)
+			
