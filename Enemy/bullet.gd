@@ -2,6 +2,8 @@ extends Node3D
 
 @export var speed: float = 1.0
 @export var damage: float = 10
+
+#@onready var parent = get_parent()
 @onready var player_pos: Vector3 = Global.player.position
 @onready var ray: RayCast3D = $RayCast3D
 

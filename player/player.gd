@@ -11,12 +11,13 @@ extends CharacterBody3D
 @onready var camera: Camera3D = $Camera3D
 @onready var health: float = max_health
 @onready var armor: float = max_armor
-@onready var knife = $Camera3D/Knife
+#@onready var knife = $Camera3D/Knife
 @onready var ui_health: Label = $HUD/health_val
 @onready var ui_armor: Label = $HUD/armor_val
-@onready var gun = $Camera3D/Gun
-@onready var shotgun = $Camera3D/Shotgun
+#@onready var gun = $Camera3D/Gun
+#@onready var shotgun = $Camera3D/Shotgun
 @onready var interact_raycast: RayCast3D = $Camera3D/RayCast3D
+@onready var weapon_manager: Node3D = $"Camera3D/Weapon Manager"
 
 var has_red_key: bool = false
 var has_blue_key: bool = false
@@ -60,8 +61,7 @@ func _process_input():
 		shoot()
 
 func shoot():
-	print("shoot")
-	knife.fire()
+	weapon_manager.shoot()
 
 func hit(damage):
 	print("get hit")

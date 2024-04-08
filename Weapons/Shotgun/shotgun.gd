@@ -11,7 +11,7 @@ func _ready():
 		r.target_position.x = randf_range(spread, -spread)
 		r.target_position.y = randf_range(spread, -spread)
 
-func fire():
+func shoot():
 	for r in container.get_children():
 		r.target_position.x = randf_range(spread, -spread)
 		r.target_position.y = randf_range(spread, -spread)
