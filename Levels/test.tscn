@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cla3k8tja00vn"]
+[gd_scene load_steps=27 format=3 uid="uid://cla3k8tja00vn"]
 
 [ext_resource type="PackedScene" uid="uid://b4lx771ljgh3o" path="res://Player/player.tscn" id="1_7xsqm"]
 [ext_resource type="PackedScene" uid="uid://clec2clxmfv2a" path="res://Enemy/enemy.tscn" id="2_vdbbj"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bmn24n7sgu4jw" path="res://Health Pickups/health_pickup.tscn" id="14_713qp"]
 [ext_resource type="PackedScene" uid="uid://brto8yumo5arn" path="res://Armor Pickups/armor_pickup.tscn" id="15_qosjt"]
 [ext_resource type="PackedScene" uid="uid://cn6cftxs30fdm" path="res://Enemy/ranged_enemy.tscn" id="17_f3lbq"]
+[ext_resource type="PackedScene" uid="uid://c3vuwk6xx5i4i" path="res://Ammo/ammo.tscn" id="17_j3pxd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xqhdl"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -195,3 +196,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28875, 0.5, -1.91044)
 
 [node name="Ranged Enemy" parent="." instance=ExtResource("17_f3lbq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 4)
+
+[node name="Ammo" parent="." instance=ExtResource("17_j3pxd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25642, 0.341477, -3.46177)

@@ -10,8 +10,14 @@ enum weapons_enum {
 @onready var current_weapon = weapons[0]
 
 func _ready():
-	#print(weapons)
-	pass
+	print(weapons)
+	#pass
+
+func add_ammo(type: String, ammount: int):
+	if type == "shotgun":
+		weapons[2].add_ammo(ammount)
+	if type == "revolver":
+		weapons[2].add_ammo(ammount)
 
 func shoot():
 	current_weapon.shoot()

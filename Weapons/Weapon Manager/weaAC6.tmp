@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwv8ggwnn8xfm"]
+
+[ext_resource type="Script" path="res://Weapons/Weapon Manager/weapon_manager.gd" id="1_4p521"]
+[ext_resource type="PackedScene" uid="uid://d0ljbgv0glbd8" path="res://Weapons/Bayonet/bayonet.tscn" id="2_ngdoj"]
+[ext_resource type="PackedScene" uid="uid://btalyirujtgrg" path="res://Weapons/Revolver/gun.tscn" id="3_g3ijg"]
+[ext_resource type="PackedScene" uid="uid://ddfxnpo0p5848" path="res://Weapons/Shotgun/shotgun.tscn" id="4_qwham"]
+
+[node name="Weapon Manager" type="Node3D"]
+script = ExtResource("1_4p521")
+
+[node name="Bayonet" parent="." instance=ExtResource("2_ngdoj")]
+
+[node name="Gun" parent="." instance=ExtResource("3_g3ijg")]
+visible = false
+
+[node name="Shotgun" parent="." instance=ExtResource("4_qwham")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+visible = false

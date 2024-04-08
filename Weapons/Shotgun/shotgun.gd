@@ -22,3 +22,7 @@ func shoot():
 				var enemy = r.get_collider()
 				enemy.hit(damage)
 		ammo -= 1
+	print(ammo)
+
+func add_ammo(ammount: int):
+	ammo = minf(ammo + ammount, max_ammo)

@@ -6,8 +6,8 @@ extends Node3D
 
 @export var ammo: int = 20
 
-func _ready():
-		print(ammo)
+#func _ready():
+		#print(ammo)
 
 func shoot():
 	if ammo >= 1:
@@ -16,4 +16,7 @@ func shoot():
 			enemy.hit(damage)
 		ammo -= 1
 		print(ammo)
+
+func add_ammo(ammount: int):
+	ammo = minf(ammo + ammount, max_ammo)
 			
