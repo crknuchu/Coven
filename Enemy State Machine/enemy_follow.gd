@@ -16,3 +16,6 @@ func physics_update(_delta):
 	
 	if enemy.should_attack():
 		transitioned.emit(self, "attack")
+
+func exit():
+	print("exit follow")

@@ -26,24 +26,9 @@ func _physics_process(_delta):
 		return
 	send_raycast()
 	draw_follow_range_sphere()
-	#draw_attack_range_sphere()
-
-func send_raycast():
-	vision_raycast.rotation.y = -rotation.y
-	vision_raycast.target_position = (Global.player.global_position + Vector3.UP*0.5 - vision_raycast.global_position)
-
-func follow():
-	nav_agent.set_target_position(Global.player.global_position)
-	var next_nav_point = nav_agent.get_next_path_position()
-	velocity = (next_nav_point - global_position).normalized() * speed
-	
-	rotation.y = -Vector2(global_position.x, global_position.z) \
-		.angle_to_point(Vector2(Global.player.global_position.x, Global.player.global_position.z)) + PI/2.0
-	
-	move_and_slide()
+	draw_attack_range_sphere()
 
 func wander(target_pos: Vector3):
-	#var target_pos = Vector3(100, 0, 100)
 	nav_agent.set_target_position(target_pos)
 	var next_nav_point = nav_agent.get_next_path_position()
 	velocity = (next_nav_point - global_position).normalized() * speed
@@ -52,11 +37,6 @@ func wander(target_pos: Vector3):
 		.angle_to_point(Vector2(target_pos.x, target_pos.z)) + PI/2.0
 	
 	move_and_slide()
-
-func should_follow():
-	return global_position.distance_to(Global.player.global_position) < follow_range \
-		and vision_raycast.is_colliding() \
-		and vision_raycast.get_collider() is Player
 	
 func should_attack():
 	#return global_position.distance_to(Global.player.global_position) < attack_range \
@@ -69,29 +49,6 @@ func should_attack():
 
 func should_wander():
 	return has_attacked
-
-func hit(player_damage):
-	print("enemy hit")
-	health -= player_damage
-	if is_gibbed(): #gib logic
-		gib()
-	elif is_dead():
-		die()
-	
-func die():
-	print("enemy died")
-	enemy_killed.emit()
-	queue_free()
-
-func gib():
-	print("enemy gibbed")
-	queue_free()
-
-func is_gibbed():
-	return health <= -max_health
-
-func is_dead():
-	return health <= 0
 	
 func attack():
 	has_attacked = true
