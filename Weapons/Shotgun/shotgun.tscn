@@ -13,23 +13,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="container"]
 target_position = Vector3(0, 0, -100)
-collision_mask = 8
+collision_mask = 12
 
 [node name="RayCast3D2" type="RayCast3D" parent="container"]
 target_position = Vector3(0, 0, -100)
-collision_mask = 8
+collision_mask = 12
 
 [node name="RayCast3D3" type="RayCast3D" parent="container"]
 target_position = Vector3(0, 0, -100)
-collision_mask = 8
+collision_mask = 12
 
 [node name="RayCast3D4" type="RayCast3D" parent="container"]
 target_position = Vector3(0, 0, -100)
-collision_mask = 8
+collision_mask = 12
 
 [node name="RayCast3D5" type="RayCast3D" parent="container"]
 target_position = Vector3(0, 0, -100)
-collision_mask = 8
+collision_mask = 12
 
 [node name="shotgun_model" parent="." instance=ExtResource("1_c3kaq")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)

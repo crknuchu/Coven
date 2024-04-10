@@ -6,17 +6,28 @@ extends Node3D
 
 @export var ammo: float = 20
 
-#func _ready():
-		#print(ammo)
+@onready var bullet_decal = preload("res://Weapons/bullet_decal.tscn")
 
 func shoot():
 	if ammo >= 1:
 		if r.is_colliding():
-			var enemy = r.get_collider()
-			enemy.hit(damage)
+			var body = r.get_collider()
+			if body is Enemy:
+				body.hit(damage)
+			else:
+				add_bullet_decal()
 		ammo -= 1
 		print(ammo)
 
 func add_ammo(ammount: float):
 	ammo = minf(ammo + ammount, max_ammo)
+
+func add_bullet_decal():
+	var b = bullet_decal.instantiate()
+	r.get_collider().add_child(b)
+	b.global_transform.origin = r.get_collision_point()
+	if r.get_collision_normal() != Vector3.UP:
+		b.look_at(r.get_collision_point() + r.get_collision_normal(), Vector3.UP)
+	else:
+		b.look_at(r.get_collision_point() + r.get_collision_normal(), Vector3.RIGHT)
 			
