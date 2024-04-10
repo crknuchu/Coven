@@ -1913,9 +1913,11 @@ radius = 0.361991
 collision_layer = 8
 collision_mask = 5
 script = ExtResource("1_t0bdd")
-speed = 1.0
+speed = 3.0
+follow_range = 10.0
 attack_range = 5.0
 attack_cooldown = 1.0
+wander_cooldown = 1.0
 draw_follow_range = true
 draw_attack_range = true
 

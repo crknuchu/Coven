@@ -12,7 +12,7 @@ signal enemy_killed
 @export var draw_follow_range: bool = false
 @export var draw_attack_range: bool = false
 
-@onready var has_attacked: bool = false
+#@onready var has_attacked: bool = false
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var vision_raycast: RayCast3D = $RayCast3D
 @onready var health: float = max_health

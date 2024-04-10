@@ -38,7 +38,7 @@ func wander(target_pos: Vector3):
 	
 	move_and_slide()
 	
-func should_attack():
+func should_attack(): 
 	#return global_position.distance_to(Global.player.global_position) < attack_range \
 		#and vision_raycast.is_colliding() \
 		#and vision_raycast.get_collider() is Player
@@ -46,12 +46,8 @@ func should_attack():
 		if body is Player:
 			return true
 	return false
-
-func should_wander():
-	return has_attacked
 	
 func attack():
-	has_attacked = true
 	for body in attack_hitbox.get_overlapping_bodies():
 		if body is Player:
 			body.hit(damage)
