@@ -1,11 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://cn6cftxs30fdm"]
+[gd_scene load_steps=21 format=3 uid="uid://clec2clxmfv2a"]
 
-[ext_resource type="Script" path="res://Enemy/ranged_enemy.gd" id="1_t0bdd"]
-[ext_resource type="Script" path="res://Enemy State Machine/enemy_state_machine.gd" id="2_li1wj"]
-[ext_resource type="Script" path="res://Enemy State Machine/enemy_idle.gd" id="3_wehu0"]
-[ext_resource type="Script" path="res://Enemy State Machine/enemy_follow.gd" id="4_kd3p1"]
-[ext_resource type="Script" path="res://Enemy State Machine/enemy_attack.gd" id="5_670yj"]
-[ext_resource type="Script" path="res://Enemy State Machine/enemy_wander.gd" id="6_uchi6"]
+[ext_resource type="Script" path="res://Enemy/melee_enemy.gd" id="1_ebcpd"]
+[ext_resource type="Script" path="res://Enemy State Machine/enemy_state_machine.gd" id="3_ygx2s"]
+[ext_resource type="Script" path="res://Enemy State Machine/enemy_idle.gd" id="4_0aq1v"]
+[ext_resource type="Script" path="res://Enemy State Machine/enemy_follow.gd" id="5_esamm"]
+[ext_resource type="Script" path="res://Enemy State Machine/enemy_attack.gd" id="6_2s1at"]
+[ext_resource type="Script" path="res://Enemy State Machine/enemy_wander.gd" id="8_5uw5h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lf178"]
 resource_name = "Pink"
@@ -1909,12 +1909,20 @@ _data = {
 height = 0.34684
 radius = 0.361991
 
-[node name="Ranged Enemy" type="CharacterBody3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_ex7ws"]
+size = Vector3(1.62402, 1, 2.16501)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ty82d"]
+size = Vector3(1.61548, 1, 2.55759)
+
+[node name="Melee Enemy" type="CharacterBody3D"]
 collision_layer = 8
 collision_mask = 5
-script = ExtResource("1_t0bdd")
+script = ExtResource("1_ebcpd")
+max_health = 80.0
 speed = 1.0
-attack_range = 5.0
+follow_range = 10.0
+attack_range = 2.0
 attack_cooldown = 1.0
 draw_follow_range = true
 draw_attack_range = true
@@ -2164,17 +2172,30 @@ debug_enabled = true
 collision_mask = 5
 
 [node name="Enemy State Machine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("2_li1wj")
+script = ExtResource("3_ygx2s")
 initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="Enemy State Machine"]
-script = ExtResource("3_wehu0")
+script = ExtResource("4_0aq1v")
 
 [node name="Follow" type="Node" parent="Enemy State Machine"]
-script = ExtResource("4_kd3p1")
+script = ExtResource("5_esamm")
 
 [node name="Attack" type="Node" parent="Enemy State Machine"]
-script = ExtResource("5_670yj")
+script = ExtResource("6_2s1at")
 
 [node name="Wander" type="Node" parent="Enemy State Machine"]
-script = ExtResource("6_uchi6")
+script = ExtResource("8_5uw5h")
+
+[node name="Attack Hitbox" type="Area3D" parent="."]
+transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, 0, -0.0497409, 0)
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Attack Hitbox"]
+transform = Transform3D(2.29885, 0, 0, 0, 2.29885, 0, 0, 0, 2.29885, 0, 2.4132, 3.63794)
+shape = SubResource("BoxShape3D_ex7ws")
+
+[node name="Attack Hitbox2" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack Hitbox2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.996377, 0.778793)
+shape = SubResource("BoxShape3D_ty82d")

@@ -1913,11 +1913,15 @@ radius = 0.361991
 collision_layer = 8
 collision_mask = 5
 script = ExtResource("1_t0bdd")
+max_health = null
+damage = null
 speed = 1.0
+follow_range = null
 attack_range = 5.0
 attack_cooldown = 1.0
-draw_follow_range = true
-draw_attack_range = true
+wander_cooldown = null
+draw_follow_range = null
+draw_attack_range = null
 
 [node name="Rat2" type="Node3D" parent="."]
 transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, 0, -0.0497409, 0)

@@ -1,24 +1,4 @@
-extends CharacterBody3D
-class_name Enemy
-
-signal enemy_killed
-
-@export var max_health: float = 100.0
-@export var damage: float = 20.0
-@export var speed: float = 5.0
-@export var follow_range: float = 5.0
-@export var attack_range: float = 3.0
-@export var attack_cooldown: float = 3.0
-@export var wander_cooldown: float = 3.0
-@export var draw_follow_range: bool = false
-@export var draw_attack_range: bool = false
-@onready var has_attacked: bool = false
-
-#@onready var attack_hitbox: Area3D = $"Attack Hitbox"
-#@onready var attack_hitbox2: Area3D = $"Attack Hitbox2"
-@onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
-@onready var vision_raycast: RayCast3D = $RayCast3D
-@onready var health: float = max_health
+extends Enemy
 
 @onready var bullet = load("res://Enemy/bullet.tscn")
 
@@ -45,7 +25,7 @@ func _physics_process(_delta):
 		return
 	send_raycast()
 	draw_follow_range_sphere()
-	#draw_attack_range_sphere()
+	draw_attack_range_sphere()
 
 func send_raycast():
 	vision_raycast.rotation.y = -rotation.y
@@ -115,6 +95,7 @@ func is_dead():
 func attack():
 	print("attack")
 	var instance = bullet.instantiate()
+	instance.damage = damage
 	instance.position = global_position
 	instance.transform.basis = global_transform.basis
 	get_parent().add_child(instance)
