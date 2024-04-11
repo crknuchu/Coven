@@ -1925,8 +1925,6 @@ follow_range = 10.0
 attack_range = 2.0
 attack_cooldown = 1.0
 wander_cooldown = 1.0
-draw_follow_range = true
-draw_attack_range = true
 
 [node name="Rat2" type="Node3D" parent="."]
 transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, 0, -0.0497409, 0)

@@ -2,16 +2,15 @@
 
 [ext_resource type="Script" path="res://Enemy/bullet.gd" id="1_mombd"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_mrv3q"]
-radius = 0.1
+[sub_resource type="SphereMesh" id="SphereMesh_5iowp"]
 
 [node name="Bullet" type="Node3D"]
 script = ExtResource("1_mombd")
 speed = 5.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.91069e-16, 4.37114e-09, -0.1, 0.1, -4.37114e-09, 0, -4.37114e-09, -0.1, -4.37114e-09, 0, 0, 0)
-mesh = SubResource("CapsuleMesh_mrv3q")
+transform = Transform3D(9.55345e-16, 2.18557e-08, -0.5, 0.5, -2.18557e-08, 1.78671e-21, -2.18557e-08, -0.5, -2.18557e-08, 0, 0, 0)
+mesh = SubResource("SphereMesh_5iowp")
 skeleton = NodePath("")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]

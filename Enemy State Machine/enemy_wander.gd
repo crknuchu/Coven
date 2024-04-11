@@ -10,8 +10,10 @@ class_name EnemyWander
 func enter():
 	print("enter wander")
 	randomize()
-	target_pos = Vector3(randf_range(-10, 10), 0, randf_range(-10, 10))
-	#await get_tree().create_timer(enemy.wander_cooldown).timeout
+	
+	var r = 10
+	var theta = randf_range(0,360)
+	target_pos = Vector3(enemy.position.x + r * cos(theta), 0, enemy.position.z + r * sin(theta))
 
 func update(_delta):
 	pass
