@@ -25,13 +25,20 @@ func explosion():
 			print("explosion hit")
 			body.hit(explosion_damage)
 			var direction = body.position - position
+			direction.y = -direction.y
+			
+			print(body.velocity)
 			body.velocity += direction * 10
 			#body.velocity += Vector3(0,1,0) * 10
-			body.move_and_slide()
+			print(body.velocity)
+			#body.move_and_slide()
 		elif body is Player:
 			print("explosion hit")
 			body.hit(explosion_damage/5.0)
 			var direction = body.position - position
+			print(body.velocity)
 			body.velocity += direction * 10
+			#body.velocity += Vector3(0,1,0) * 10
+			print(body.velocity)
 		queue_free()
 			

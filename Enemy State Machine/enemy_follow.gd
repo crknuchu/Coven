@@ -11,7 +11,8 @@ func update(_delta):
 	pass
 
 func physics_update(_delta):
-	enemy.follow()
+	if enemy.is_on_floor():
+		enemy.follow()
 		
 	if enemy.should_attack():
 		transitioned.emit(self, "attack")

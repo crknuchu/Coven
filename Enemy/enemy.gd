@@ -43,6 +43,10 @@ func _physics_process(delta):
 	draw_follow_range_sphere()
 	draw_attack_range_sphere()
 
+	if not is_on_floor():
+		velocity.y -= gravity * delta
+	move_and_slide()
+
 func send_raycast():
 	vision_raycast.rotation.y = -rotation.y
 	vision_raycast.target_position = (Global.player.global_position + Vector3.UP*0.5 - vision_raycast.global_position)
@@ -56,8 +60,8 @@ func follow():
 	rotation.y = -Vector2(global_position.x, global_position.z) \
 		.angle_to_point(Vector2(Global.player.global_position.x, Global.player.global_position.z)) + PI/2.0
 	
-	#if not is_on_floor():
-	
+	if not is_on_floor():
+		velocity.y -= gravity
 	
 	move_and_slide()
 
