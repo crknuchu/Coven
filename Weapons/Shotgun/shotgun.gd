@@ -4,9 +4,11 @@ extends Node3D
 @export var spread: float = 5
 @export var max_ammo: float = 50
 @export var ammo: float = 20
+@export var shoot_timer: float = 1.5
 
 @onready var container = $container
 @onready var bullet_decal = preload("res://Weapons/bullet_decal.tscn")
+@onready var can_shoot: bool = true
 
 func _ready():
 	randomize()
@@ -15,7 +17,7 @@ func _ready():
 		r.target_position.y = randf_range(spread, -spread)
 
 func shoot():
-	if ammo >= 1:
+	if ammo >= 1 and can_shoot:
 		for r in container.get_children():
 			r.target_position.x = randf_range(spread, -spread)
 			r.target_position.y = randf_range(spread, -spread)
@@ -26,6 +28,9 @@ func shoot():
 				else:
 					add_bullet_decal(r)
 		ammo -= 1
+		can_shoot = false
+		await get_tree().create_timer(shoot_timer).timeout
+		can_shoot = true
 	print(ammo)
 
 func add_ammo(ammount: float):

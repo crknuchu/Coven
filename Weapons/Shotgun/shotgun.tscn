@@ -7,6 +7,7 @@
 script = ExtResource("1_w704p")
 damage = 30.0
 spread = 10.0
+shoot_timer = 0.9
 
 [node name="container" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

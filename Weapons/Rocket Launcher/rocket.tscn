@@ -7,7 +7,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_er3cm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_giog6"]
-radius = 5.0
+radius = 3.0
 
 [node name="Rocket" type="Node3D"]
 script = ExtResource("1_p0g1x")
