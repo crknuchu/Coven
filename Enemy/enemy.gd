@@ -11,6 +11,7 @@ signal enemy_killed
 @export var wander_cooldown: float = 3.0
 @export var draw_follow_range: bool = false
 @export var draw_attack_range: bool = false
+@export var gravity: float = 20.0
 
 #@onready var has_attacked: bool = false
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
@@ -34,9 +35,10 @@ func draw_attack_range_sphere():
 	if draw_attack_range:
 		DebugDraw3D.draw_sphere(position,attack_range,Color(1,0,0))
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if not is_instance_valid(Global.player):
 		return
+	
 	send_raycast()
 	draw_follow_range_sphere()
 	draw_attack_range_sphere()
@@ -49,9 +51,13 @@ func follow():
 	nav_agent.set_target_position(Global.player.global_position)
 	var next_nav_point = nav_agent.get_next_path_position()
 	velocity = (next_nav_point - global_position).normalized() * speed
+	velocity.y -= gravity
 	
 	rotation.y = -Vector2(global_position.x, global_position.z) \
 		.angle_to_point(Vector2(Global.player.global_position.x, Global.player.global_position.z)) + PI/2.0
+	
+	#if not is_on_floor():
+	
 	
 	move_and_slide()
 

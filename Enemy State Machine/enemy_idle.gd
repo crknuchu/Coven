@@ -12,6 +12,7 @@ func update(_delta):
 func physics_update(_delta):
 	if enemy.should_follow():
 		transitioned.emit(self, "follow")
+	#pass/
 
 func exit():
 	print("exit idle")

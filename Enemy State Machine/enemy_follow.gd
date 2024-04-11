@@ -12,8 +12,7 @@ func update(_delta):
 
 func physics_update(_delta):
 	enemy.follow()
-	#anim_player.play("Rat_Walk")
-	
+		
 	if enemy.should_attack():
 		transitioned.emit(self, "attack")
 

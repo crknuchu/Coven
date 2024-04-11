@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfsunibo8gpmu"]
+
+[ext_resource type="Script" path="res://Weapons/Rocket Launcher/rocket.gd" id="1_p0g1x"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ll7ak"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_er3cm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_giog6"]
+radius = 5.0
+
+[node name="Rocket" type="Node3D"]
+script = ExtResource("1_p0g1x")
+speed = 20.0
+damage = 5.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_ll7ak")
+
+[node name="rocket_collision" type="Area3D" parent="."]
+collision_mask = 44
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="rocket_collision"]
+shape = SubResource("SphereShape3D_er3cm")
+
+[node name="explosion_collision" type="Area3D" parent="."]
+collision_mask = 13
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="explosion_collision"]
+shape = SubResource("SphereShape3D_giog6")

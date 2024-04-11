@@ -39,5 +39,9 @@ func swap_weapons():
 		current_weapon.visible = false
 		current_weapon = weapons[2]
 		current_weapon.visible = true
+	elif Input.is_action_just_pressed("weapon_4"):
+		current_weapon.visible = false
+		current_weapon = weapons[3]
+		current_weapon.visible = true
 		
 	

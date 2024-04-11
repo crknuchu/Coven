@@ -1906,7 +1906,7 @@ _data = {
 }
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_s3kjf"]
-height = 0.34684
+height = 0.5
 radius = 0.361991
 
 [node name="Ranged Enemy" type="CharacterBody3D"]
@@ -1918,6 +1918,8 @@ follow_range = 10.0
 attack_range = 5.0
 attack_cooldown = 1.0
 wander_cooldown = 1.0
+draw_follow_range = true
+draw_attack_range = true
 
 [node name="Rat2" type="Node3D" parent="."]
 transform = Transform3D(0.435, 0, 0, 0, 0.435, 0, 0, 0, 0.435, 0, -0.0497409, 0)
