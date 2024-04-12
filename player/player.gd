@@ -18,6 +18,7 @@ extends CharacterBody3D
 #@onready var shotgun = $Camera3D/Shotgun
 @onready var interact_raycast: RayCast3D = $Camera3D/RayCast3D
 @onready var weapon_manager: Node3D = $"Camera3D/Weapon Manager"
+@onready var hold_position = $"Camera3D/Hold Position"
 
 var has_red_key: bool = false
 var has_blue_key: bool = false

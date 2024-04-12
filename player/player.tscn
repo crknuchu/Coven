@@ -49,8 +49,12 @@ current = true
 
 [node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -3)
+collision_mask = 32
 
 [node name="Weapon Manager" parent="Camera3D" instance=ExtResource("2_iwpe7")]
+
+[node name="Hold Position" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 

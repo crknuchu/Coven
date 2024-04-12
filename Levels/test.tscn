@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://cla3k8tja00vn"]
+[gd_scene load_steps=30 format=3 uid="uid://cla3k8tja00vn"]
 
 [ext_resource type="PackedScene" uid="uid://b4lx771ljgh3o" path="res://Player/player.tscn" id="1_7xsqm"]
 [ext_resource type="PackedScene" uid="uid://clec2clxmfv2a" path="res://Enemy/melee_enemy.tscn" id="2_vdbbj"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://brto8yumo5arn" path="res://Armor Pickups/armor_pickup.tscn" id="15_qosjt"]
 [ext_resource type="PackedScene" uid="uid://cn6cftxs30fdm" path="res://Enemy/ranged_enemy.tscn" id="17_f3lbq"]
 [ext_resource type="PackedScene" uid="uid://c3vuwk6xx5i4i" path="res://Ammo/ammo.tscn" id="17_j3pxd"]
+[ext_resource type="PackedScene" uid="uid://k7mahnci76a6" path="res://Interactable/Pickupable/pickupable.tscn" id="18_rspm3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xqhdl"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -66,7 +67,7 @@ shadow_enabled = true
 environment = SubResource("Environment_i7tas")
 
 [node name="Player" parent="." instance=ExtResource("1_7xsqm")]
-transform = Transform3D(0.039504, 0, -0.999219, 0, 1, 0, 0.999219, 0, 0.039504, 3.05654, 0.5, -6.0324)
+transform = Transform3D(0.039504, 0, -0.999219, 0, 1, 0, 0.999219, 0, 0.039504, 3.05654, 0.5, -14.0324)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -214,3 +215,6 @@ shape = SubResource("BoxShape3D_fin6b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 mesh = SubResource("BoxMesh_duofp")
+
+[node name="Pickupable" parent="." instance=ExtResource("18_rspm3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -13)

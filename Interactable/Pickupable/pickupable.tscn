@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://k7mahnci76a6"]
+
+[ext_resource type="Script" path="res://Interactable/Pickupable/pickupable.gd" id="1_8d276"]
+[ext_resource type="Script" path="res://Interactable/Interactable.gd" id="1_igjfj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lnsqn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cvbqi"]
+
+[node name="Pickupable" type="Node3D"]
+script = ExtResource("1_8d276")
+
+[node name="Interactable" type="RigidBody3D" parent="."]
+collision_layer = 36
+collision_mask = 5
+script = ExtResource("1_igjfj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+shape = SubResource("BoxShape3D_lnsqn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactable"]
+mesh = SubResource("BoxMesh_cvbqi")
+skeleton = NodePath("../..")
